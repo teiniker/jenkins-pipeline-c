@@ -51,7 +51,7 @@ $ sudo systemctl start jenkins.service
 
 A pipeline is a sequence of automated operations that usually represents a part of the software delivery and quality assurance process.
 
-A Jenkins pipeline consists of two kinds of elements—Stage and Step:
+A Jenkins pipeline consists of two kinds of elements:
 * **Step**: A single operation that tells Jenkins what to do.
 	For example, check out code from the repository, execute a script .
 * **Stage**: A logical separation of steps that groups conceptually distinct sequences of steps.
