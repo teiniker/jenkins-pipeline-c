@@ -57,7 +57,7 @@ A Jenkins pipeline consists of two kinds of elements—Stage and Step:
 * **Stage**: A logical separation of steps that groups conceptually distinct sequences of steps.
  	For example, Build, Test, and Deploy, used to visualize the Jenkins pipeline progress.
 
-_Example_: Simple Jenkins pipeline with three stages
+_Example_: Jenkins commit pipeline (checkout, build, and unit test)
 ```
 pipeline 
 {
@@ -69,7 +69,6 @@ pipeline
         {
             steps 
             {
-                echo 'Build stage: compile all code and build an executable' 
                 sh 'make'
             }
         }
@@ -77,16 +76,7 @@ pipeline
         {
             steps 
             {
-                echo 'Test stage: run the test cases' 
                	sh 'build/stack_test'
-            }
-        }
-        stage('static-analysis') 
-        {
-            steps 
-            {
-                echo 'Static-analysis stage: run the cppcheck tool' 
-               	sh 'cppcheck --enable=all --suppress=missingIncludeSystem src/*.c test/*.c '
             }
         }
     }
@@ -129,6 +119,28 @@ Steps define the operations that are executed, so they actually tell Jenkins wha
 * **custom**: Jenkins offers a lot of operations that can be used as steps (for example, `echo`); many of them are simply wrappers over the sh command used for convenience; plugins can also define their own operations.
 
 * **script**: This executes a block of the Groovy-based code that can be used for some non-trivial scenarios where flow control is needed.
+
+
+## Commit Pipeline
+
+The most **basic Continuous Integration process** is called a commit pipeline.
+
+This phase starts with a commit (or push in Git) to the main repository and results in a report about 
+the build success or failure. 
+
+Since it runs after each change in the code, **the build should take no more than five minutes** and 
+should consume a reasonable amount of resources.
+
+The commit phase works as follows: a developer checks in the code to the repository, the Continuous Integration server detects the change, and the build starts. 
+The most fundamental commit pipeline contains three stages: 
+* **Checkout**: This stage downloads the source code from the repository. 
+
+* **Compile**: This stage compiles the source code. 
+
+* **Unit test**: This stage runs a suite of unit tests.
+
+
+
 
 
 ## References
