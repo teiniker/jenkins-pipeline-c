@@ -9,7 +9,7 @@ pipeline
             steps 
             {
                 echo 'Build stage: compile all code and build an executable' 
-                make
+          
             }
         }
         stage('test') 
@@ -17,7 +17,7 @@ pipeline
             steps 
             {
                 echo 'Test stage: run the test cases' 
-               	build/stack_test
+               	
             }
         }
     }
