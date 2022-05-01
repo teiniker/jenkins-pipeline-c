@@ -18,7 +18,6 @@ stack_test.o: test/stack_test.c
 
 test: init unity.o stack.o stack_test.o
 	$(CC) $(CFLAGS) build/unity.o build/stack.o build/stack_test.o -o build/stack_test
-	build/stack_test
 
 clean:
 	rm -rf build/
