@@ -9,7 +9,7 @@ pipeline
             steps 
             {
                 echo 'Build stage: compile all code and build an executable' 
-                make
+                sh 'make'
             }
         }
         stage('test') 
@@ -17,7 +17,15 @@ pipeline
             steps 
             {
                 echo 'Test stage: run the test cases' 
-               	build/stack_test
+               	sh 'build/stack_test'
+            }
+        }
+        stage('static-analysis') 
+        {
+            steps 
+            {
+                echo 'Static-analysis stage: run the cppcheck tool' 
+               	sh 'cppcheck --enable=all --suppress=missingIncludeSystem src/*.c test/*.c '
             }
         }
     }
