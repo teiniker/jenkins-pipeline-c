@@ -53,9 +53,9 @@ void test_top(void)
 int main(void)
 {
 	UNITY_BEGIN();
-    RUN_TEST(test_is_empty);
+    	RUN_TEST(test_is_empty);
 	RUN_TEST(test_is_not_empty);
 	RUN_TEST(test_pop);
-    RUN_TEST(test_top);
+    	RUN_TEST(test_top);
 	return UNITY_END();
 }
