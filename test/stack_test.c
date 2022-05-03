@@ -40,7 +40,7 @@ void test_is_empty(void)
 void test_pop(void) 
 {
     TEST_ASSERT_EQUAL(5, stack_pop(stack));
-    TEST_ASSERT_EQUAL(2, stack_pop(stack));
+    TEST_ASSERT_EQUAL(3, stack_pop(stack));
     TEST_ASSERT_EQUAL(1, stack_pop(stack));
 }
 
