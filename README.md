@@ -42,10 +42,19 @@ $ sudo systemctl disable jenkins.service
 $ sudo systemctl start jenkins.service
 ```
 
-
-
 ## Jenkins Job Configuration
 
+In summary, we need the following settings for a new job: 
+* New Item 
+	* Pipeline
+* GitHub project: Project url: `https://github.com/teiniker/jenkins-pipeline-c.git/`
+* Build Triggers 
+	* Poll SCM: `H/1 * * * *`
+* Pipeleine: Pipeline Script from SCM: 
+	* SCM: Git 
+	* Repository URL: `https://github.com/teiniker/jenkins-pipeline-c.git` 
+	* Branch Specifier: `*/main` 
+* Script Path: Jenkinsfile
 
 ## Jenkins Pipeline Syntax
 
@@ -140,7 +149,19 @@ The most fundamental commit pipeline contains three stages:
 * **Unit test**: This stage runs a suite of unit tests.
 
 
+## Static Code Analysis 
 
+**Cppcheck** is a static analysis tool for C/C++ code. 
+It provides unique code analysis to detect bugs and focuses on detecting undefined 
+behaviour and dangerous coding constructs.
+
+Using the package manager, we can install cppcheck in one step:
+```
+$ sudo apt install cppcheck
+
+$ cppcheck --version
+Cppcheck 2.3
+```
 
 
 ## References
@@ -154,5 +175,7 @@ The most fundamental commit pipeline contains three stages:
 
 * Rafał Leszko. **Continuous Delivery with Docker and Jenkins: Create secure applications by building complete CI/CD pipelines**. Packt Publishing, 2nd Edition 2019.
 
-*Egon Teiniker, 2022, GPL v3.0* 
+* [Cppcheck](https://cppcheck.sourceforge.io/)
+
+*Egon Teiniker, 2022-2023, GPL v3.0* 
 		
