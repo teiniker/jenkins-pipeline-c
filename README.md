@@ -22,7 +22,7 @@
 
 Per default **Jenkins is running as a service** which is **enabled on system start**.
 ```
-	$ systemctl status jenkins.service
+	$ sudo systemctl status jenkins.service
 	● jenkins.service - Jenkins Continuous Integration Server
 		Loaded: loaded (/lib/systemd/system/jenkins.service; enabled; vendor preset: enabled)
 		Active: active (running) since Sun 2022-05-01 12:04:49 CEST; 5h 33min ago
