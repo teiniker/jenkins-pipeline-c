@@ -42,6 +42,8 @@ $ sudo systemctl disable jenkins.service
 $ sudo systemctl start jenkins.service
 ```
 
+Use your browser and go to: http://localhost:8080/
+
 ## Jenkins Job Configuration
 
 In summary, we need the following settings for a new job: 
