@@ -25,7 +25,7 @@ void tearDown(void)
 
 void test_is_not_empty(void)
 {
-    TEST_ASSERT_TRUE(stack_is_empty(stack));
+    TEST_ASSERT_FALSE(stack_is_empty(stack));
 }
 
 void test_is_empty(void)
@@ -34,7 +34,7 @@ void test_is_empty(void)
     stack_pop(stack);
     stack_pop(stack);
 
-    TEST_ASSERT_FALSE(stack_is_empty(stack));
+    TEST_ASSERT_TRUE(stack_is_empty(stack));
 }
 
 void test_pop(void) 
