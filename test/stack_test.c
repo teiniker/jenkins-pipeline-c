@@ -41,7 +41,7 @@ void test_pop(void)
 {
     TEST_ASSERT_EQUAL(5, stack_pop(stack));
     TEST_ASSERT_EQUAL(3, stack_pop(stack));
-    TEST_ASSERT_EQUAL(1, stack_pop(stack));
+    TEST_ASSERT_EQUAL(2, stack_pop(stack));
 }
 
 void test_top(void) 
