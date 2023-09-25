@@ -26,6 +26,7 @@ pipeline
             {
                 echo 'Static-analysis stage: run the cppcheck tool' 
                	sh 'cppcheck --xml --xml-version=2 SOURCE_DIRECTORY 2> cppcheck.xml --enable=all --suppress=missingIncludeSystem src/*.c test/*.c '
+                publishCppcheck pattern:'cppcheck.xml'
             }
         }
     }
