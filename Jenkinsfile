@@ -28,5 +28,12 @@ pipeline
                	sh 'cppcheck --xml --xml-version=2 SOURCE_DIRECTORY 2> cppcheck.xml --enable=all --suppress=missingIncludeSystem src/*.c test/*.c '
             }
         }
+        post 
+        {
+            always 
+            {
+                cppcheck pattern: 'cppcheck.xml'
+            }
+        }
     }
 }
