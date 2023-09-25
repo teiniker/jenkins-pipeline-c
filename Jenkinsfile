@@ -29,11 +29,4 @@ pipeline
             }
         }
     }
-    post 
-    {
-        always 
-        {
-            cppcheck pattern: 'cppcheck.xml'
-        }
-    }
 }
