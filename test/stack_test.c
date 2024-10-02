@@ -12,7 +12,7 @@ void setUp(void)
     stack = stack_new();
     stack_push(stack, 1);
     stack_push(stack, 3);
-    stack_push(stack, 7);
+    stack_push(stack, 5);
 
     stack_print(stack);
 }
