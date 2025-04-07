@@ -1,0 +1,61 @@
+pipeline 
+{
+    agent any
+    
+    stages 
+    {
+        stage('build') 
+        {
+          agent {
+            docker { image '10.25.0.40:1337/repository/docker/docker-c-image' 
+            }
+ 
+            }
+            steps 
+            {
+                echo 'Build stage: compile all code and build an executable' 
+                sh 'uname -a'
+                sh 'make'
+            }
+        }
+      
+        stage('test') 
+        {
+          agent {
+            docker { image '10.25.0.40:1337/repository/docker/docker-c-image' 
+
+            }
+            }
+            steps 
+            {
+                echo 'Test stage: run the test cases' 
+               	sh 'build/stack_test'
+            }
+        }
+
+        stage('sca') 
+        {
+            agent {
+                docker { image '10.25.0.40:1337/repository/docker/docker-sca' }
+            }
+            steps 
+            {
+                echo 'Static-analysis stage: run the cppcheck tool' 
+
+                sh '''
+                pwd
+                . /home/endless/venv/bin/activate
+                python -m utilitysca src/*.c cppcheck database.db
+                '''
+            }
+
+        }     
+    }
+    post 
+    {
+        always 
+        {
+            echo 'I will always execute this!'
+        }
+    }
+}
