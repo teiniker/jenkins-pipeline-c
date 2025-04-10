@@ -2,12 +2,16 @@ pipeline
 {
     agent any
     
+    environment {
+        NEXUS_CRED = 'nexus-endless'
+    }
+    
     stages 
     {
         stage('build') 
         {
           agent {
-            docker { image '10.25.0.40:1337/repository/docker/docker-c-image' 
+            docker { image "${env.NEXUS_URL_DOCKER}/repository/docker/docker-c-image" 
             }
  
             }
@@ -22,7 +26,7 @@ pipeline
         stage('test') 
         {
           agent {
-            docker { image '10.25.0.40:1337/repository/docker/docker-c-image' 
+            docker { image "${env.NEXUS_URL_DOCKER}/repository/docker/docker-c-image"
 
             }
             }
@@ -36,17 +40,22 @@ pipeline
         stage('sca') 
         {
             agent {
-                docker { image '10.25.0.40:1337/repository/docker/docker-sca' }
+                docker { image "${env.NEXUS_URL_DOCKER}/repository/docker/docker-sca" }
             }
             steps 
             {
-                echo 'Static-analysis stage: run the cppcheck tool' 
-
-                sh '''
-                pwd
-                . /home/endless/venv/bin/activate
-                python -m utilitysca src/*.c cppcheck database.db
-                '''
+                script {
+                    echo 'Static-analysis stage: run the cppcheck tool and upload db to Nexus' 
+                    withCredentials([usernamePassword(credentialsId: 'nexus-endless', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh '''
+                            python3 -m venv home/endless/venv
+                            . /home/endless/venv/bin/activate
+                            DB_NAME="${JOB_NAME}-cppcheck.db"
+                            python -m utilitysca src/*.c cppcheck "$DB_NAME"
+                            curl -v -u $DOCKER_USER:$DOCKER_PASSWORD --upload-file "$DB_NAME" $NEXUS_URL/repository/db/"$DB_NAME"
+                            '''                        
+                    }    
+                }
             }
 
         }     
