@@ -2,10 +2,6 @@ pipeline
 {
     agent any
     
-    environment {
-        NEXUS_CRED = 'nexus-endless'
-    }
-    
     stages 
     {
         stage('build') 
