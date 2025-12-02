@@ -1,48 +1,26 @@
 # Jenkins Pipeline for C/C++ Applications
 
-## Setup
-```
-    $ sudo apt update
-    $ sudo apt -y upgrade
+## Setup 
 
-    Jenkins Debian Packages
-    https://pkg.jenkins.io/debian-stable/
+There a many ways to setup a Jenkins server - it depends on our use case.
 
-    $ curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
-        /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+### WAR File Setup 
 
-    $ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-        https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-        /etc/apt/sources.list.d/jenkins.list > /dev/null
+A **WAR (Web Application Archive)** is a Java web application packaged for 
+deployment. The Jenkins WAR can be run directly with a compatible Java 
+runtime (for example, JDK 21) using `java -jar jenkins.war`, so we can 
+start Jenkins without installing a separate application server.
 
-    $ sudo apt-get update
-    $ sudo apt-get install fontconfig openjdk-11-jre
-    $ sudo apt-get install jenkins
-```
+* Download Jenkins Generic Java package (.war): [https://www.jenkins.io/download/](https://www.jenkins.io/download/) 
 
-Per default **Jenkins is running as a service** which is **enabled on system start**.
-```
-	$ sudo systemctl status jenkins.service
-	● jenkins.service - Jenkins Continuous Integration Server
-		Loaded: loaded (/lib/systemd/system/jenkins.service; enabled; vendor preset: enabled)
-		Active: active (running) since Sun 2022-05-01 12:04:49 CEST; 5h 33min ago
-	    Main PID: 54753 (java)
-		Tasks: 40 (limit: 4663)
-		Memory: 506.4M
-			CPU: 1min 40.953s
-		CGroup: /system.slice/jenkins.service
-				└─54753 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080
-```
+* In the download directory
+    ```bash
+    $ java -jar jenkins.war --httpPort=8080
+    ```
 
+* Browse to http://localhost:8080
 
-To **disable the service** and **manually start** it if needed, type:
-```
-$ sudo systemctl disable jenkins.service
-
-$ sudo systemctl start jenkins.service
-```
-
-Use your browser and go to: http://localhost:8080/
+* Follow the instructions to complete the installation
 
 ## Jenkins Job Configuration
 
