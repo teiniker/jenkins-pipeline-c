@@ -46,17 +46,22 @@ Use your browser and go to: http://localhost:8080/
 
 ## Jenkins Job Configuration
 
-In summary, we need the following settings for a new job: 
+We need the following settings for a new Jenkins job:
+
 * New Item 
-	* Pipeline
-* GitHub project: Project url: `https://github.com/teiniker/jenkins-pipeline-c.git/`
-* Build Triggers 
-	* Poll SCM: `H/1 * * * *`
-* Pipeleine: Pipeline Script from SCM: 
-	* SCM: Git 
-	* Repository URL: `https://github.com/teiniker/jenkins-pipeline-c.git` 
-	* Branch Specifier: `*/main` 
-* Script Path: Jenkinsfile
+	- Pipeline
+    - Description (optional)
+    - Build Triggers 
+	    - Poll SCM: `H/1 * * * *`
+    - Pipeline / Definition: 
+      - Pipeleine: Pipeline Script from SCM: 
+        - SCM: Git 
+        - Repository URL: `https://github.com/teiniker/jenkins-pipeline-c.git` 
+        - Branches to build: `*/main` 
+      - Script Path: Jenkinsfile
+
+Save these settings.
+
 
 ## Jenkins Pipeline Syntax
 
