@@ -59,33 +59,15 @@ The most fundamental commit pipeline contains three stages:
 * **Unit test**: This stage runs a suite of unit tests.
 
 
-## Static Code Analysis 
-
-**Cppcheck** is a static analysis tool for C/C++ code. 
-It provides unique code analysis to detect bugs and focuses on detecting undefined 
-behaviour and dangerous coding constructs.
-
-Using the package manager, we can install cppcheck in one step:
-```
-$ sudo apt install cppcheck
-
-$ cppcheck --version
-Cppcheck 2.3
-```
-
-
 ## References
 
 * [YouTube: How to Install Jenkins](https://youtu.be/CEyfsQq3QEM)
 * [YouTube: Complete Jenkins Pipeline Tutorial](https://youtu.be/7KCS70sCoK0)
-
 * [Getting started with Pipeline](https://www.jenkins.io/doc/book/pipeline/getting-started/)
-
 * [Using a Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 
 * Rafał Leszko. **Continuous Delivery with Docker and Jenkins: Create secure applications by building complete CI/CD pipelines**. Packt Publishing, 2nd Edition 2019.
 
-* [Cppcheck](https://cppcheck.sourceforge.io/)
 
-*Egon Teiniker, 2022-2023, GPL v3.0* 
+*Egon Teiniker, 2024-2025, GPL v3.0* 
 		
