@@ -1,4 +1,4 @@
-# Jenkins Pipeline for C/C++ Applications
+# Jenkins Pipeline C
 
 ## Setup 
 
