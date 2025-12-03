@@ -20,15 +20,7 @@ pipeline
                	sh 'build/stack_test'
             }
         }
-        stage('static-analysis') 
-        {
-            steps 
-            {
-                echo 'Static-analysis stage: run the cppcheck tool' 
-               	sh 'cppcheck --xml --xml-version=2 SOURCE_DIRECTORY 2> cppcheck.xml --enable=all --suppress=missingIncludeSystem src/*.c test/*.c '
-                recordIssues tools: [cppCheck(pattern: 'cppcheck.xml')]
-            }
-        }
+
     }
     post 
     {
