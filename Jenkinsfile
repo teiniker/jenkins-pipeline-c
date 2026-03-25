@@ -21,12 +21,20 @@ pipeline
                	sh 'build/test'
             }
         }
+        stage('doc')
+        {
+            steps
+            {
+                echo 'Documentation stage: generate API documentation'
+                sh 'make doc'
+            }
+        }
     }
     post 
     {
         success 
         {
-            archiveArtifacts artifacts: 'build/main, build/test', fingerprint: true
+            archiveArtifacts artifacts: 'build/main, build/test, doc/html/**', fingerprint: true
         }
     }
 }
