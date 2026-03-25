@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/** @file */
+
 /**
  * @brief A single stack node storing one integer value.
  */
