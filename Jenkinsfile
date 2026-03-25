@@ -17,16 +17,16 @@ pipeline
             steps 
             {
                 echo 'Test stage: run the test cases' 
-               	sh 'build/stack_test'
+                sh 'make test'
+               	sh 'build/test'
             }
         }
-
     }
     post 
     {
         success 
         {
-            archiveArtifacts artifacts: 'build/stack_test', fingerprint: true
+            archiveArtifacts artifacts: 'build/main, build/test', fingerprint: true
         }
     }
 }

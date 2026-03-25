@@ -29,7 +29,8 @@ pipeline
             steps 
             {
                 echo 'Test stage: run the test cases' 
-               	sh 'build/stack_test'
+                sh 'make test'
+               	sh 'build/test'
             }
         }
 

@@ -1,23 +1,31 @@
 CFLAGS=-std=c23 -g -Wall -I include
 CC=gcc
 UNITY=./unity
+APP_EXE=build/main
+TEST_EXE=build/test
 
-all: init test
+all: $(APP_EXE)
 
 init:
 	mkdir -p build
 
-unity.o: $(UNITY)/unity.c $(UNITY)/unity.h
+build/unity.o: $(UNITY)/unity.c $(UNITY)/unity.h | init
 	$(CC) $(CFLAGS) -c $(UNITY)/unity.c -o build/unity.o
 
-stack.o: include/stack.h src/stack.c
+build/stack.o: include/stack.h src/stack.c | init
 	$(CC) $(CFLAGS) -c src/stack.c -o build/stack.o
 
-stack_test.o: test/stack_test.c
-	$(CC) $(CFLAGS) -I $(UNITY) -c test/stack_test.c -o build/stack_test.o
+build/main.o: src/main.c include/stack.h | init
+	$(CC) $(CFLAGS) -c src/main.c -o build/main.o
 
-test: init unity.o stack.o stack_test.o
-	$(CC) $(CFLAGS) build/unity.o build/stack.o build/stack_test.o -o build/stack_test
+build/test.o: test/test.c include/stack.h | init
+	$(CC) $(CFLAGS) -I $(UNITY) -c test/test.c -o build/test.o
+
+$(APP_EXE): build/stack.o build/main.o
+	$(CC) $(CFLAGS) build/stack.o build/main.o -o $(APP_EXE)
+
+test: init build/unity.o build/stack.o build/test.o
+	$(CC) $(CFLAGS) build/unity.o build/stack.o build/test.o -o $(TEST_EXE)
 
 clean:
 	rm -rf build/
