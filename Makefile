@@ -1,4 +1,4 @@
-CFLAGS=-std=c99 -g -Wall -I include
+CFLAGS=-std=c23 -g -Wall -I include
 CC=gcc
 UNITY=./unity
 
