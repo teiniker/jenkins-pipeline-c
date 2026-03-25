@@ -4,6 +4,8 @@ UNITY=./unity
 APP_EXE=build/main
 TEST_EXE=build/test
 
+.PHONY: all init test doc clean
+
 all: $(APP_EXE)
 
 init:
@@ -31,4 +33,4 @@ doc:
 	doxygen Doxyfile
 
 clean:
-	rm -rf build/
+	rm -rf build/ doc/
