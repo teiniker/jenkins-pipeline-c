@@ -21,6 +21,9 @@ start Jenkins without installing a separate application server.
 * Browse to http://localhost:8080
 
 * Follow the instructions to complete the installation
+  - Enter intital password (see command line output)
+  - Install plugins
+  - Enter username and password 
 
 ## Jenkins Job Configuration
 
