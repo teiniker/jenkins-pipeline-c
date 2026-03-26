@@ -25,6 +25,13 @@ start Jenkins without installing a separate application server.
   - Install plugins
   - Enter username and password 
 
+Also install the **HTML Publisher** plugin, which can be used to show
+the generated Doxygen documentation.
+* Manage Jenkins 
+  - Plugins
+    - Available plugins: search for `HTML Publisher`
+    
+
 ## Jenkins Job Configuration
 
 We need the following settings for a new Jenkins job:
@@ -74,6 +81,7 @@ A simple commit pipeline contains the following stages:
 
 * Rafał Leszko. **Continuous Delivery with Docker and Jenkins: Create secure applications by building complete CI/CD pipelines**. Packt Publishing, 2nd Edition 2019.
 
+* [HTML Publisher](https://plugins.jenkins.io/htmlpublisher/)
 
 *Egon Teiniker, 2024-2026, GPL v3.0* 
 		
