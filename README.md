@@ -54,13 +54,16 @@ Since it runs after each change in the code, **the build should take no more tha
 should consume a reasonable amount of resources.
 
 The commit phase works as follows: a developer checks in the code to the repository, the Continuous Integration server detects the change, and the build starts. 
-The most fundamental commit pipeline contains three stages: 
+
+A simple commit pipeline contains the following stages: 
+
 * **Checkout**: This stage downloads the source code from the repository. 
 
 * **Compile**: This stage compiles the source code. 
 
 * **Unit test**: This stage runs a suite of unit tests.
 
+* **Documentation**: Extract API documentation from the source code.
 
 ## References
 
@@ -72,5 +75,5 @@ The most fundamental commit pipeline contains three stages:
 * Rafał Leszko. **Continuous Delivery with Docker and Jenkins: Create secure applications by building complete CI/CD pipelines**. Packt Publishing, 2nd Edition 2019.
 
 
-*Egon Teiniker, 2024-2025, GPL v3.0* 
+*Egon Teiniker, 2024-2026, GPL v3.0* 
 		
