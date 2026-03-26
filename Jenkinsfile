@@ -27,6 +27,14 @@ pipeline
             {
                 echo 'Documentation stage: generate API documentation'
                 sh 'make doc'
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'build/doc/html',
+                    reportFiles: 'index.html',
+                    reportName: 'Doxygen'
+                ])
             }
         }
     }
