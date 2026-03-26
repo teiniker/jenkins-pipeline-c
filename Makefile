@@ -4,6 +4,7 @@ UNITY=./unity
 APP_EXE=build/main
 TEST_EXE=build/test
 
+.PHONY: all init test doc clean
 
 all: init $(APP_EXE)
 
@@ -28,7 +29,7 @@ $(APP_EXE): build/stack.o build/main.o
 test: init build/unity.o build/stack.o build/test.o
 	$(CC) $(CFLAGS) build/unity.o build/stack.o build/test.o -o $(TEST_EXE)
 
-build/doc:
+doc:
 	doxygen Doxyfile
 
 clean:
