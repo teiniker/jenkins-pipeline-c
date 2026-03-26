@@ -34,7 +34,7 @@ pipeline
     {
         success 
         {
-            archiveArtifacts artifacts: 'build/main, build/test, doc/html/**', fingerprint: true
+            archiveArtifacts artifacts: 'build/main, build/test, build/doc/html/**', fingerprint: true
         }
     }
 }
