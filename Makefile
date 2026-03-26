@@ -4,23 +4,22 @@ UNITY=./unity
 APP_EXE=build/main
 TEST_EXE=build/test
 
-.PHONY: all init test doc clean
 
-all: $(APP_EXE)
+all: init $(APP_EXE)
 
 init:
 	mkdir -p build
 
-build/unity.o: $(UNITY)/unity.c $(UNITY)/unity.h | init
+build/unity.o: $(UNITY)/unity.c $(UNITY)/unity.h 
 	$(CC) $(CFLAGS) -c $(UNITY)/unity.c -o build/unity.o
 
-build/stack.o: include/stack.h src/stack.c | init
+build/stack.o: include/stack.h src/stack.c
 	$(CC) $(CFLAGS) -c src/stack.c -o build/stack.o
 
-build/main.o: src/main.c include/stack.h | init
+build/main.o: src/main.c include/stack.h
 	$(CC) $(CFLAGS) -c src/main.c -o build/main.o
 
-build/test.o: test/test.c include/stack.h | init
+build/test.o: test/test.c include/stack.h
 	$(CC) $(CFLAGS) -I $(UNITY) -c test/test.c -o build/test.o
 
 $(APP_EXE): build/stack.o build/main.o
